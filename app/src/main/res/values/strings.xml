@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TrackLoader</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="recent">Recent</string>
+    <string name="explore">Explore</string>
+
+    <string name="last_visited">Last visited: %s ago</string>
+    <string name="minutes">%s mins</string>
+    <string name="price">$%s</string>
+    <string name="price_label">Price:</string>
+    <string name="could_not_load_tracks">Could not load tracks</string>
+    <string name="check_your_connection">Check your connection and then try again.</string>
+</resources>

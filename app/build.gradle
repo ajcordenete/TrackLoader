@@ -1,0 +1,126 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId "com.aljon.trackloader"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            debuggable true
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle"
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle"
+
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$version_lifecycle"
+
+    // Annotation processor
+    kapt "androidx.lifecycle:lifecycle-compiler:$version_lifecycle"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$version_lifecycle"
+
+    // Fragment extensions
+    implementation "androidx.fragment:fragment-ktx:$version_fragment"
+
+    // Material Design Components
+    implementation "com.google.android.material:material:$version_material"
+
+    // Navigation
+    implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
+    implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
+
+    // REST API
+    implementation "com.squareup.retrofit2:retrofit: $version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+
+    // Kotlin Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
+
+    // JSON Parsing
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    // Image Loading
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+    implementation "com.github.bumptech.glide:annotations:$version_glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$version_glide"
+
+    //Logging
+    implementation "com.jakewharton.timber:timber:$verion_timber"
+
+    // For Date and Time parsing
+    implementation "com.jakewharton.threetenabp:threetenabp:$version_date_time"
+
+    // Core with Ktx
+    implementation "androidx.core:core-ktx:$version_core"
+
+    //RecyclerView
+    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+
+    // Room database
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+
+    // Dagger
+    implementation "com.google.dagger:dagger:$version_dagger"
+    kapt "com.google.dagger:dagger-compiler:$version_dagger"
+    implementation "com.google.dagger:dagger-android-support:$version_dagger"
+    kapt "com.google.dagger:dagger-android-processor:$version_dagger"
+
+    //Unit tests
+    testImplementation "junit:junit:$version_junit"
+    testImplementation "org.hamcrest:hamcrest-library:$version_hamcrest"
+    testImplementation "androidx.test.ext:junit:$version_androidX_kotlin_runner"
+    testImplementation "androidx.test:core-ktx:$version_androidX_testCore"
+    testImplementation "androidx.arch.core:core-testing:$version_arch_test"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version_kotlin_coroutines"
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

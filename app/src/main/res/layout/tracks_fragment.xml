@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.aljon.trackloader.ui.tracks.TracksViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/motion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/last_visited_text"
+            style="@style/TextDisableEmphasis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/material_dimen_normal"
+            app:visited="@{ viewModel.lastVisited }"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/track_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/last_visited_text"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_track_item"
+            tools:itemCount="16"/>
+
+        <ProgressBar
+            android:id="@+id/loading_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/track_list"/>
+
+        <include
+            android:id="@+id/empty_track_layout"
+            layout="@layout/empty_track_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{ viewModel.emptyTracks ? View.VISIBLE : View.GONE }"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

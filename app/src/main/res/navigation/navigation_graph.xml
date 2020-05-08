@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/tracksFragment">
+
+    <fragment
+        android:id="@+id/tracksFragment"
+        android:name="com.aljon.trackloader.ui.tracks.TracksFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/tracks_fragment">
+        <action
+            android:id="@+id/action_tracksFragment_to_trackDetailFragment"
+            app:destination="@id/trackDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/trackDetailFragment"
+        android:name="com.aljon.trackloader.ui.trackdetail.TrackDetailFragment"
+        android:label=" "
+        tools:layout="@layout/track_detail_fragment">
+        <argument
+            android:name="trackID"
+            app:argType="long" />
+    </fragment>
+</navigation>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.bumptech.glide.request.RequestListener"/>
+        <import type="android.graphics.drawable.Drawable"/>
+
+        <variable
+            name="viewModel"
+            type="com.aljon.trackloader.ui.trackdetail.TrackDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/material_dimen_normal">
+
+            <ImageView
+                android:id="@+id/artwork_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintWidth_percent="0.35"
+                app:layout_constraintDimensionRatio="2:3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic"
+                app:imageUrl="@{ viewModel.track.artwork }"/>
+
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/artwork_image"
+                app:layout_constraintBottom_toTopOf="@id/genre_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/material_dimen_large"
+                android:layout_marginEnd="@dimen/material_dimen_small"
+                android:layout_marginBottom="@dimen/material_dimen_small"
+                android:text="@{ viewModel.track.name }"
+                style="@style/TextHighEmphasis"
+                tools:text="A Star is Born (2018)" />
+
+            <TextView
+                android:id="@+id/genre_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/artwork_image"
+                app:layout_constraintBottom_toTopOf="@id/duration_text"
+                android:layout_marginStart="@dimen/material_dimen_large"
+                android:layout_marginBottom="@dimen/material_dimen_small"
+                android:text="@{ viewModel.track.genre }"
+                style="@style/GenreStyle"
+                tools:text="Sci-Fi Fantasy" />
+
+            <TextView
+                android:id="@+id/duration_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/price_text"
+                app:layout_constraintStart_toEndOf="@id/artwork_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/material_dimen_large"
+                android:layout_marginBottom="@dimen/material_dimen_small"
+                android:text="@{ @string/minutes(String.valueOf(viewModel.track.duration)) }"
+                style="@style/TextMediumEmphasis"
+                tools:text="270 min" />
+
+            <TextView
+                android:id="@+id/price_label_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/artwork_image"
+                app:layout_constraintStart_toEndOf="@id/artwork_image"
+                android:layout_marginStart="@dimen/material_dimen_large"
+                android:layout_marginBottom="@dimen/material_dimen_small"
+                android:text="@string/price_label"
+                style="@style/TextDisableEmphasis" />
+
+            <TextView
+                android:id="@+id/price_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/artwork_image"
+                app:layout_constraintStart_toEndOf="@id/price_label_text"
+                android:layout_marginStart="@dimen/material_dimen_normal"
+                android:layout_marginBottom="@dimen/material_dimen_small"
+                android:text="@{ @string/price(String.valueOf(viewModel.track.price)) }"
+                style="@style/PriceStyle"
+                tools:text="$24.99" />
+
+            <View
+                android:id="@+id/divider_bottom"
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/material_dimen_large"
+                app:layout_constraintTop_toBottomOf="@id/artwork_image"/>
+
+            <TextView
+                android:id="@+id/synopsis_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/divider_bottom"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/material_dimen_normal"
+                android:text="@string/synopsis"
+                style="@style/TextHighEmphasis" />
+
+            <TextView
+                android:id="@+id/description_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/synopsis_label"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingTop="@dimen/material_dimen_normal"
+                android:text="@{ viewModel.track.description }"
+                style="@style/TextMediumEmphasis"
+                android:lineSpacingMultiplier="1.5"
+                tools:text="Seasoned musician Jackson Maine (Bradley Cooper) discovers—and falls in love with—struggling artist Ally (Lady Gaga). She has just about given up on her dream to make it big as a singer… until Jack coaxes her into the spotlight. But even as Ally’s career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons."/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</layout>
